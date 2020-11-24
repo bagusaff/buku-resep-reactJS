@@ -30,21 +30,21 @@ export default function Recipe(props) {
                 </div>
             </div>
             <div className="recipe__row">
-                <span className="recipe__label">Cook Time:</span>
+                <span className="recipe__label">Lama Pembuatan:</span>
                 <span className="recipe__value">{cookTime}</span>
             </div>
             <div className="recipe__row">
-                <span className="recipe__label">Serve:</span>
+                <span className="recipe__label">Penyajian untuk:</span>
                 <span className="recipe__value">{servings}</span>
             </div>
             <div className="recipe__row">
-                <span className="recipe__label">instruction:</span>
+                <span className="recipe__label">Langkah-langkah:</span>
                 <div className="recipe__value recipe__value--tab recipe__instruction">
                     {instruction}
                 </div>
             </div>
             <div className="recipe__row">
-                <span className="recipe__label">Ingredients:</span>
+                <span className="recipe__label">Bahan yang dibutuhkan:</span>
                 <div className="recipe__value recipe__value--tab">
                     <IngredientList ingredients={ingredients} />
                 </div>

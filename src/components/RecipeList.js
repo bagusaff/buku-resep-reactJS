@@ -19,7 +19,7 @@ export default function RecipeList({recipes}) {
                 className="btn btn--primary"
                 onClick={handleRecipeAdd}
             >
-                Add Recipe
+                Tambah Resep
             </button>
         </div>
         </div>

@@ -35,20 +35,20 @@ export default function RecipeEdit({recipe}) {
                 <button className="btn recipe-edit__remove-button" onClick={()=> handleRecipeSelect(undefined)}>&times;</button>
             </div>
             <div className="recipe-edit__details-grid">
-                <label htmlFor="name" className="recipe-edit__label">Name</label>
+                <label htmlFor="name" className="recipe-edit__label">Nama</label>
                 <input type="text" name="name" id="name" className="recipe-edit__input" value={recipe.name} onChange={e => handleChange({name: e.target.value})}/>
-                <label htmlFor="cookTime" className="recipe-edit__label">Cook Time</label>
+                <label htmlFor="cookTime" className="recipe-edit__label">Waktu Masak</label>
                 <input type="text" name="cookTime" id="cookTime" className="recipe-edit__input" value={recipe.cookTime} onChange={e => handleChange({cookTime: e.target.value})}/>
-                <label htmlFor="servings" className="recipe-edit__label">Servings</label>
+                <label htmlFor="servings" className="recipe-edit__label">Penyajian untuk</label>
                 <input type="number" min="1" name="servings" id="servings" className="recipe-edit__input" value={recipe.servings} onChange={e => handleChange({servings: parseInt(e.target.value) || ''})}/>
-                <label htmlFor="instructions" className="recipe-edit__label">Instructions</label>
+                <label htmlFor="instructions" className="recipe-edit__label">Langkah-langkah</label>
                 <textarea name="instructions" id="instructions" className="recipe-edit__input" value={recipe.instruction} onChange={e => handleChange({instruction: e.target.value})}/>
             </div>
             <br />
-            <label className="recipe-edit__label">Ingredients</label>
+            <label className="recipe-edit__label">Bahan-bahan</label>
             <div className="recipe-edit__ingredient-grid">
-                <div>Name</div>
-                <div>Amount</div>
+                <div>Nama</div>
+                <div>Jumlah</div>
                 <div></div>
                 {recipe.ingredients.map(ingredient=>(
                     <RecipeIngredientEdit 
@@ -60,7 +60,7 @@ export default function RecipeEdit({recipe}) {
                 ))}
             </div>
             <div className="recipe-edit__add-ingredient-btn-container">
-                <button className="btn btn--primary" onClick={()=>handleIngredientAdd()}>Add Ingredients</button>
+                <button className="btn btn--primary" onClick={()=>handleIngredientAdd()}>Tambahkan bahan</button>
             </div>
         </div>
     )
