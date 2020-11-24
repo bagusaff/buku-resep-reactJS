@@ -25,29 +25,41 @@ export default function App() {
   const recipeContextValue = {
     handleRecipeAdd,
     handleRecipeDelete,
-    handleRecipeSelect
+    handleRecipeSelect,
+    handleRecipeChange
   }
 
   function handleRecipeAdd(){
     const newRecipe = {
       id: uuidv4(),
-      name: 'New',
-      servings: 2,
-      cookTime: '1:00',
-      instructions:'Instr.',
+      name: '',
+      servings: 1,
+      cookTime: '',
+      instructions:'',
       ingredients: [
-        { id: uuidv4(), name: 'Name', amount: '1Tbs'}
+        { id: uuidv4(), name: '', amount: ''}
       ]
     }
+    setSelectedRecipeId(newRecipe.id)
     setRecipes([...recipes, newRecipe])
   }
 
   function handleRecipeDelete(id){
+    if(selectedRecipeId!= null && selectedRecipeId === id ){
+      setSelectedRecipeId(undefined)
+    }
     setRecipes(recipes.filter(recipe => recipe.id !== id))
   }
 
   function handleRecipeSelect(id){
     setSelectedRecipeId(id)
+  }
+
+  function handleRecipeChange(id, recipe){
+    const newRecipes = [...recipes]
+    const index = newRecipes.findIndex(r => r.id === id)
+    newRecipes[index] = recipe
+    setRecipes(newRecipes)
   }
 
   return (
@@ -63,40 +75,21 @@ export default function App() {
 //Create array for dynamic recipe
 const sampleRecipes = [
   {
-    id:1,
-    name:'Plain Chicken',
-    servings: 3,
-    cookTime: '1:45',
-    instruction:`1.Put salt on Chicken\n2.Eat Chicken`,
+    id:uuidv4(),
+    name:'Mie Goreng',
+    servings: 1,
+    cookTime: '0:05',
+    instruction:`1.Rebus Mie\n2.Siapkan Bumbu di piring \n3.Buang sisa air rebusan\n4.Campurkan mie dengan bumbu`,
     ingredients:[
       {
-        id:1,
-        name:'Chicken',
-        amount:'2 Kilo'
+        id:uuidv4(),
+        name:'Mie Goreng',
+        amount:'1 Bungkus'
       },
       {
-        id:2,
-        name:'Salt',
-        amount:'2 Sendok'
-      }
-    ]
-  },
-  {
-    id:2,
-    name:'Plain Pork',
-    servings: 4,
-    cookTime: '2:25',
-    instruction:`1.Put salt on Pork \n2.Eat Pork`,
-    ingredients:[
-      {
-        id:1,
-        name:'Pork',
-        amount:'2 Kilo'
-      },
-      {
-        id:2,
-        name:'Salt',
-        amount:'2 Sendok'
+        id:uuidv4(),
+        name:'Air',
+        amount:'200 mililiter'
       }
     ]
   }
