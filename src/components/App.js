@@ -4,7 +4,6 @@ import RecipeEdit from './RecipeEdit';
 import '../css/app.css'
 import {v4 as uuidv4} from 'uuid';
 
-
 export const RecipeContext = React.createContext()
 const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes'
 
@@ -12,21 +11,36 @@ export default function App() {
   const [recipes, setRecipes] = useState(sampleRecipes)
   const [selectedRecipeId, setSelectedRecipeId] = useState()
   const selectedRecipe = recipes.find(recipe=> recipe.id === selectedRecipeId)
+  const [search,setSearch] = useState("")
+  const [searchedRecipe,setSearchedRecipe] = useState([])
   
   useEffect(()=>{
     const recipeJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
-    if(recipeJSON != null) setRecipes(JSON.parse(recipeJSON))
+    if(recipeJSON != null) setRecipes(JSON.parse(recipeJSON))    
   },[])
 
   useEffect(()=>{
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes))
   }, [recipes])
 
+  useEffect(()=>{
+    (async () => {
+      const searchingRecipe = recipes.filter(recipe=> recipe.name.includes(search.searchTerm))
+      await setSearchedRecipe(searchingRecipe)
+      console.log(searchedRecipe)    
+    })();    
+  },[recipes,search])
+
   const recipeContextValue = {
     handleRecipeAdd,
     handleRecipeDelete,
     handleRecipeSelect,
-    handleRecipeChange
+    handleRecipeChange,
+    handleRecipeSearch
+  }
+
+  function handleRecipeSearch(searchTerm){
+    setSearch(searchTerm)
   }
 
   function handleRecipeAdd(){
@@ -65,7 +79,7 @@ export default function App() {
   return (
     <>
     <RecipeContext.Provider value={recipeContextValue}>
-      <RecipeList recipes={recipes}/>
+    <RecipeList  recipes={search.searchTerm === undefined || "" ? recipes : searchedRecipe } onChange={handleRecipeSearch}/>
       {selectedRecipe && <RecipeEdit recipe={selectedRecipe}/> }
     </RecipeContext.Provider>
     </>

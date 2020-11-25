@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import Recipe from './Recipe'
+import SearchBox from './SearchBox'
 import {RecipeContext} from './App'
 
 export default function RecipeList({recipes}) {
@@ -7,6 +8,7 @@ export default function RecipeList({recipes}) {
     
     return (
         <div className="recipe-list">
+        <SearchBox/>
         <div>
         {recipes.map(recipe=>{
            return (
