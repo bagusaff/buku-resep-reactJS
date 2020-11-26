@@ -20,14 +20,13 @@ export default function App() {
   },[])
 
   useEffect(()=>{
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes))
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes)) 
   }, [recipes])
 
   useEffect(()=>{
     (async () => {
       const searchingRecipe = recipes.filter(recipe=> recipe.name.includes(search.searchTerm))
       await setSearchedRecipe(searchingRecipe)
-      console.log(searchedRecipe)    
     })();    
   },[recipes,search])
 
@@ -52,7 +51,8 @@ export default function App() {
       instructions:'',
       ingredients: [
         { id: uuidv4(), name: '', amount: ''}
-      ]
+      ],
+      chef:''
     }
     setSelectedRecipeId(newRecipe.id)
     setRecipes([...recipes, newRecipe])
@@ -75,6 +75,7 @@ export default function App() {
     newRecipes[index] = recipe
     setRecipes(newRecipes)
   }
+
 
   return (
     <>
@@ -105,6 +106,7 @@ const sampleRecipes = [
         name:'Air',
         amount:'200 mililiter'
       }
-    ]
+    ],
+    chef:'Bagus'
   }
 ]

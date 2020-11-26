@@ -18,7 +18,7 @@
 
 .recipe__title {
     margin: 0;
-    font-size: 1.75rem;
+    font-size: 1.75rem;    
 }
 
 .recipe__row {
@@ -40,4 +40,9 @@
 
 .recipe__instruction {
     white-space:pre-wrap;
+}
+
+.author {
+    color: grey !important;
+    font-style: italic;
 }

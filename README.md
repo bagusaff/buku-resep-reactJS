@@ -17,8 +17,14 @@ aplikasi untuk menuliskan resep makanan, menggunakan teknologi React dan Nodejs
 * [x]Setup Client
 * [x]Membuat komponen resep
 * [x]Membuat komponen daftar resep
-* []Menyimpan Resep ke localStorage
-* []Membuat tombol edit / delete
-* []Membuat komponen edit resep
-* []Menambahkan fitur Search
-* []Menambah kolom pembuat resep
+* [x]Menyimpan Resep ke localStorage
+* [x]Membuat tombol edit / delete
+* [x]Membuat komponen edit resep
+* [x]Menambahkan fitur Search
+* [x]Menambah kolom pembuat resep
+
+### Update 26-11-2020
+* Setup backend ( install mongoose, express, cors)
+* Konfigurasi recipe-model
+* Konfigurasi routes
+* Menambah kolom chef  

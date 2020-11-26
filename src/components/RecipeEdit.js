@@ -1,13 +1,12 @@
 import React, {useContext} from 'react'
 import RecipeIngredientEdit from './RecipeIngredientEdit'
 import {RecipeContext} from './App'
-import {v4 as uuidv4} from 'uuid';
+import {v4 as uuidv4} from 'uuid'
 
 export default function RecipeEdit({recipe}) {
-    const {handleRecipeChange, handleRecipeSelect } = useContext(RecipeContext)
-
+    const {handleRecipeChange, handleRecipeSelect} = useContext(RecipeContext)
     function handleChange(changes){
-        handleRecipeChange(recipe.id,{ ...recipe, ...changes })
+        handleRecipeChange(recipe.id,{ ...recipe, ...changes }) 
     }
 
     function handleIngredientChange(id,ingredient){
@@ -25,10 +24,10 @@ export default function RecipeEdit({recipe}) {
         }
         handleChange({ingredients:[...recipe.ingredients, newIngredient]})
     }
-
     function handleIngredientDelete(id){
         handleChange({ingredients: recipe.ingredients.filter(i=> i.id !== id)})
     }
+
     return (
         <div className ="recipe-edit">
             <div className="recipe-edit__remove-button-container">
@@ -61,6 +60,14 @@ export default function RecipeEdit({recipe}) {
             </div>
             <div className="recipe-edit__add-ingredient-btn-container">
                 <button className="btn btn--primary" onClick={()=>handleIngredientAdd()}>Tambahkan bahan</button>
+            </div>
+            <br />
+            <div className="recipe-edit__details-grid">
+            <label htmlFor="name" className="recipe-edit__label">Nama Pembuat</label>
+                <input type="text" name="chef" id="chef" className="recipe-edit__input" value={recipe.chef} onChange={e => handleChange({chef: e.target.value})}/>
+            </div>
+            <div className="recipe-edit__add-ingredient-btn-container">
+                <button className="btn btn--primary" onClick={()=>handleIngredientAdd()}>Bagikan Resep</button>
             </div>
         </div>
     )

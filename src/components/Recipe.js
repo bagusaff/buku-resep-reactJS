@@ -9,7 +9,8 @@ export default function Recipe(props) {
         cookTime,
         servings,
         instruction,
-        ingredients
+        ingredients,
+        chef
     } = props
 
     return (
@@ -48,6 +49,10 @@ export default function Recipe(props) {
                 <div className="recipe__value recipe__value--tab">
                     <IngredientList ingredients={ingredients} />
                 </div>
+            </div>
+            <div className="recipe__row">
+                <span className="recipe__label">Pembuat Resep:</span>
+                <span className="author">{chef}</span>
             </div>
         </div>
     )
